@@ -1,0 +1,28 @@
+{
+  "name": "more-places-to-stay-service",
+  "version": "1.0.0",
+  "description": "bougie/more-places-to-stay",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "react-dev": "webpack -d --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HRSF130-Bougie/more-places-to-stay-service.git"
+  },
+  "author": "Jacob Johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HRSF130-Bougie/more-places-to-stay-service/issues"
+  },
+  "homepage": "https://github.com/HRSF130-Bougie/more-places-to-stay-service#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
+}
