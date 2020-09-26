@@ -95,7 +95,8 @@ const retrieveData = (callback) => {
     .then((response) => {
       callback(null, response);
     })
-    .catch(console.log);
+    // .catch(console.log);
+    .catch((err) => callback(err));
 };
 
 module.exports = {
