@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 const mongoose = require('mongoose');
 const faker = require('faker');
+const dummy = require('./photoDump.js');
 
 mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true });
 
@@ -32,60 +34,72 @@ const Listing = mongoose.Schema({
 });
 
 // =========== CREATE MODEL BASED ON SCHEMA ==============
-const singleListing = mongoose.model('singleListing', Listing);
+const SingleListing = mongoose.model('singleListing', Listing);
 
-// =========== CREATE RECORDS==============
+const awsURL = dummy.dummyURL;
+const listingType = dummy.descType;
 
-const listingRecord = new singleListing({
-  id: faker.random.number(),
-  description: null,
-  photo: null,
-  popularity: {
-    newListing: null,
-    noReviews: null,
-    stars: null,
-    reviewCount: null,
-  },
-  type: null,
-  heart: true,
-  beds: 4,
-  rate: 295.00,
-  label: {
-    superhost: null,
-    plus: null,
-  },
-});
+// faker.lorem.words(),
 
-listingRecord.save((err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(listingRecord);
-    console.log('Record saved to DB!');
+const initializeData = () => {
+  // Drop Database
+  db.dropDatabase();
+
+  // =========== CREATE SEEDED RECORDS==============
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 12; i++) {
+    const listingRecord = new SingleListing({
+      id: faker.random.number({
+        min: 1,
+        max: 99,
+      }),
+      description: dummy.randomDescription(),
+      photo: awsURL[Math.floor(Math.random() * awsURL.length)],
+      popularity: {
+        newListing: faker.random.boolean(),
+        noReviews: faker.random.boolean(),
+        stars: faker.finance.amount(3.25, 5, 2),
+        reviewCount: faker.random.number({
+          min: 12,
+          max: 227,
+        }),
+      },
+      type: listingType[Math.floor(Math.random() * listingType.length)],
+      heart: faker.random.boolean(),
+      beds: faker.random.number({
+        min: 1,
+        max: 8,
+      }),
+      rate: faker.commerce.price(295, 1295),
+      label: {
+        superhost: faker.random.boolean(),
+        plus: faker.random.boolean(),
+      },
+    });
+
+    listingRecord.save((err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Successfully saved seeded record to DB v2!');
+      }
+    });
   }
-});
-
-module.exports = {
 };
 
-/*
-const Listing = new schema({
-  id: Number,
-  description: String,
-  photo: String,
-  popularity: {
-    newListing: Boolean,
-    noReviews: Boolean,
-    stars: Number,
-    reviewCount: Number,
-  },
-  type: String,
-  heart: Boolean,
-  beds: Number,
-  rate: Number,
-  label: {
-    superhost: Boolean,
-    plus: Boolean,
-  },
-});
-*/
+// ================ RETRIEVE (GET) SAVED DUMY DATA ===============
+const retrieveData = (callback) => {
+  // initializeData();
+  console.log('reached back end side');
+  SingleListing.find({})
+    .then((response) => {
+      callback(null, response);
+    })
+    // .catch(console.log);
+    .catch((err) => callback(err));
+};
+
+module.exports = {
+  initializeData,
+  retrieveData,
+};
