@@ -87,6 +87,9 @@ const initializeData = () => {
   }
 };
 
+// Initialize data call
+initializeData();
+
 // ================ RETRIEVE (GET) SAVED DUMY DATA ===============
 const retrieveData = (callback) => {
   // initializeData();
