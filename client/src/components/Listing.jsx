@@ -18,7 +18,7 @@ class Listing extends React.Component {
     return (
       <div>
         <ListingHero dummyData={dummyData} />
-        <ListingBody dummyData={dummyData} />
+        {/* <ListingBody dummyData={dummyData} /> */}
       </div>
     );
   }

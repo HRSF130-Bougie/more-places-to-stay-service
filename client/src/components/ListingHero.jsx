@@ -21,6 +21,15 @@ class ListingHero extends React.Component {
         <img src={obj.photo} width="250" alt="" height="325" />
         {/* <div> ${obj.heart} </div> */}
         {/* <div> {obj.label.superhost} </div> */}
+        <div>
+        <span>
+          {obj.popularity.stars}
+          ({obj.popularity.reviewCount})
+        </span>
+        </div>
+        <span> {obj.type} * {obj.beds} beds </span>
+        <div> {obj.description} </div>
+        <div> ${obj.rate}/ night </div>
       </div>,
     // eslint-disable-next-line function-paren-newline
     );
