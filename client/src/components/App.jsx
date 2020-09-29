@@ -1,15 +1,20 @@
 /* eslint-disable import/extensions */
 import React from 'react';
+import styled from "styled-components";
 import Listing from './Listing.jsx';
 import dummyData from './dummyData';
 const axios = require('axios');
+
+// const CarouselWrapper = styled.div`
+//   display: flex;
+//  `;
 
 class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      dummyData: [],
+      seededData: [],
 
     };
     // THIS BINDING AREA
@@ -26,15 +31,15 @@ class App extends React.Component {
       .then(results => results.data)
       // .then(result => console.log(result))
       .then(result => this.setState({
-        dummyData: result,
+        seededData: result,
       }))
       .catch(console.log);
   }
 
   render() {
     return (
-      <div>
-        <Listing dummyData={this.state.dummyData} />
+      <div className="More-Places-App">
+        <Listing seededData={this.state.seededData} />
       </div>
     );
   }
