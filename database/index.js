@@ -14,7 +14,6 @@ db.once('open', () => {
 
 // ========= CREATE DB SCHEMA =============
 const Listing = mongoose.Schema({
-  id: Number,
   description: String,
   photo: String,
   popularity: {
@@ -49,10 +48,6 @@ const initializeData = () => {
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < 12; i++) {
     const listingRecord = new SingleListing({
-      id: faker.random.number({
-        min: 1,
-        max: 99,
-      }),
       description: dummy.randomDescription(),
       photo: awsURL[Math.floor(Math.random() * awsURL.length)],
       popularity: {

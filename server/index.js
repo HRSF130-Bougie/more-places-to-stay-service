@@ -14,11 +14,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Connect to client FRONT END
-app.use(express.static(path.resolve(__dirname, '/../client/dist')));
+// app.use(express.static(path.resolve(__dirname, '/../client/dist')));
+app.use('/', express.static(path.join(__dirname, '/../client/dist')));
 
 // Get Request Basic Test
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello World from baselevel Server!');
 });
 
 // Get Request data generator
