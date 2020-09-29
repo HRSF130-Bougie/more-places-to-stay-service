@@ -19,8 +19,9 @@ class ListingHero extends React.Component {
     const mappedHero = this.props.dummyData.map((obj) =>
       <div>
         <img src={obj.photo} width="250" alt="" height="325" />
-        {/* <div> ${obj.heart} </div> */}
-        {/* <div> {obj.label.superhost} </div> */}
+        <div> Superhost: {obj.label.superhost.toString()} </div>
+        <div> Plus: {obj.label.plus.toString()} </div>
+        <div> Heart: {obj.heart.toString()} </div>
         <div>
         <span>
           {obj.popularity.stars}
