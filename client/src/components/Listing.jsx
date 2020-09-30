@@ -1,15 +1,16 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 import ListingHero from './ListingHero.jsx';
 
-// const RowWrapper = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   background-color: teal;
-//   justify-content: space-around;
-//   align-items: flex-end;
-//  `;
+const RowWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-color: teal;
+  justify-content: left;
+  overflow: auto hidden !important;
+  scroll-snap-type: x mantadory !important;
+ `;
 
 class Listing extends React.Component {
   constructor(props) {
@@ -24,10 +25,10 @@ class Listing extends React.Component {
     // eslint-disable-next-line react/prop-types
     const { seededData } = this.props;
     return (
-      <div>
+      <RowWrapper>
         <ListingHero seededData={seededData} />
         {/* <ListingBody dummyData={dummyData} /> */}
-      </div>
+      </RowWrapper>
     );
   }
 }
