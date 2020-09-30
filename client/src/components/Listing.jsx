@@ -14,7 +14,7 @@ const RowWrapper = styled.div`
     margin-top: 0px;
     margin-left: 353px;
     margin-right: 353px;
-    min-width: 706px;
+    min-width: 1120px;
     scroll-snap-type: x mandatory;
     `;
 
