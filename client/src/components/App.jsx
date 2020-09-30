@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
 import React from 'react';
 import styled from "styled-components";
@@ -36,10 +37,15 @@ class App extends React.Component {
       .catch(console.log);
   }
 
+  // const HeaderWrapper = styled.div`
+  //   display: flex;
+  //   padding-left: 40px !important;
+  //   `;
+
   render() {
     return (
       <div className="More-Places-App">
-        <h2>MORE PLACES TO STAY</h2>
+        <div>MORE PLACES TO STAY</div>
         <Listing seededData={this.state.seededData} />
       </div>
     );

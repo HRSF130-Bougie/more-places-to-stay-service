@@ -5,6 +5,32 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Image = styled.img`
+     display: block !important;
+     height: 100% !important;
+     left: 0px !important;
+     position: absolute !important;
+     top: 0px !important;
+     width: 100% !important;
+     border-radius: 12px !important;
+     `;
+
+const AirWrapper = styled.div`
+    display: flex;
+    height: 100%;
+    list-style: none;
+    overflow: auto hidden;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    min-width: 100%;
+    scroll-snap-type: x mandatory;
+    `;
+
+const Describe = styled.div`
+      text-overflow: ellipses !important;
+    `;
+
 class ListingHero extends React.Component {
   constructor(props) {
     super(props);
@@ -18,62 +44,53 @@ class ListingHero extends React.Component {
 
   handleClick() {
     alert('Listing Body Clicked!');
-  };
+  }
 
   render() {
-    const Image = styled.img`
-     display: block !important;
-     height: 100% !important;
-     left: 0px !important;
-     position: absolute !important;
-     top: 0px !important;
-     width: 100% !important;
-     border-radius: 12px !important;
-     `;
-
-    const AirWrapper = styled.div`
-    display: flex !important;
-    height: 100% !important;
-    list-style: none !important;
-    overflow: auto hidden !important;
-    padding-left: 0px !important;
-    margin-bottom: 0px !important;
-    margin-top: 0px !important;
-    min-width: 100% !important;
-    scroll-snap-type: x mandatory !important;
-    `;
-
-    const Describe = styled.div`
-      text-overflow: ellipses !important;
-    `;
-
-
     // console.log(this.props);
     // const { beds, description } = this.props;
     // eslint-disable-next-line react/destructuring-assignment
-    const mappedHero = this.props.seededData.map((obj) =>
-      <div>
-        <div onClick={this.handleClick}>
-          <img src={obj.photo} width="250" alt="" height="325" />
-          <div> Superhost: {obj.label.superhost.toString()} </div>
-          <div> Plus: {obj.label.plus.toString()} </div>
-          <div> Heart: {obj.heart.toString()} </div>
-          <div>
-            <span>
-              {obj.popularity.stars}
-              ({obj.popularity.reviewCount})
-            </span>
-          </div>
-          <span> {obj.type} * {obj.beds} beds </span>
-          <Describe> {obj.description} </Describe>
-        </div>
-        <div> ${obj.rate}/ night </div>
-      </div>,
-    // eslint-disable-next-line function-paren-newline
-    );
+    // const mappedHero = this.props.seededData.map((obj) =>
+    //   <div>
+    //     <div onClick={this.handleClick}>
+    //       <img src={obj.photo} width="265" alt="" height="177" />
+    //       {/* <div> Superhost: {obj.label.superhost.toString()} </div>
+    //       <div> Plus: {obj.label.plus.toString()} </div>
+    //       <div> Heart: {obj.heart.toString()} </div> */}
+    //       <div>
+    //         <span>
+    //           {obj.popularity.stars}
+    //           ({obj.popularity.reviewCount})
+    //         </span>
+    //       </div>
+    //       <span> {obj.type} * {obj.beds} beds </span>
+    //       <Describe> {obj.description} </Describe>
+    //     </div>
+    //     <div> ${obj.rate}/ night </div>
+    //   </div>,
+    // // eslint-disable-next-line function-paren-newline
+    // );
+    const {obj} = this.props;
+
     return (
       <AirWrapper>
-        {mappedHero}
+        <div>
+          <div onClick={this.handleClick}>
+            <img src={obj.photo} width="265" alt="" height="177" />
+            {/* <div> Superhost: {obj.label.superhost.toString()} </div>
+          <div> Plus: {obj.label.plus.toString()} </div>
+          <div> Heart: {obj.heart.toString()} </div> */}
+            <div>
+              <span>
+                {obj.popularity.stars}
+                ({obj.popularity.reviewCount})
+              </span>
+            </div>
+            <span> {obj.type} * {obj.beds} beds </span>
+            <Describe> {obj.description} </Describe>
+          </div>
+          <div> ${obj.rate}/ night </div>
+        </div>
       </AirWrapper>
     );
   }
