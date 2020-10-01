@@ -1,13 +1,18 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 import Listing from './Listing.jsx';
 import dummyData from './dummyData';
+import GlobalFonts from '../fonts/fonts';
 const axios = require('axios');
 
-// const CarouselWrapper = styled.div`
-//   display: flex;
-//  `;
+const HeaderWrapper = styled.div`
+  justify-content: space-between;
+  padding-bottom: 24px;
+  margin-left: 353px;
+
+  `;
 
 class App extends React.Component {
   constructor() {
@@ -39,7 +44,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="More-Places-App">
-        <h2>MORE PLACES TO STAY</h2>
+      <GlobalFonts />
+        <HeaderWrapper>MORE PLACES TO STAY
+        </HeaderWrapper>
         <Listing seededData={this.state.seededData} />
       </div>
     );
