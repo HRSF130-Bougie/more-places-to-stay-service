@@ -44,7 +44,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="More-Places-App">
-        <HeaderWrapper>MORE PLACES TO STAY </HeaderWrapper>
+      <GlobalFonts />
+        <HeaderWrapper>MORE PLACES TO STAY
+        </HeaderWrapper>
         <Listing seededData={this.state.seededData} />
       </div>
     );

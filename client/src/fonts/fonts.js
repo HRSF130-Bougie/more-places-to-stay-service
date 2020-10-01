@@ -4,21 +4,29 @@
 import { createGlobalStyle } from 'styled-components';
 
 import AirbnbCerealBlack from './AirbnbCerealBlack.woff';
-// import AirbnbCerealBold from './AirbnbCerealBold.woff2';
+import AirbnbCerealBold from './AirbnbCerealBold.woff';
 import AirbnbCerealBook from './AirbnbCerealBook.woff';
-// import AirbnbCerealExtraBold from './AirbnbCerealExtraBold.woff2';
+import AirbnbCerealExtraBold from './AirbnbCerealExtraBold.woff';
 import AirbnbCerealLight from './AirbnbCerealLight.woff';
-// import AirbnbCerealMedium from './AirbnbCerealMedium.woff2';
+import AirbnbCerealMedium from './AirbnbCerealMedium.woff';
 
-export default createGlobalStyle`
+const GlobalFonts = createGlobalStyle`
     @font-face {
-        font-family: 'airbnb';
-        src:
-        local('AirbnbCerealBlack'),
-        local('AirbnbCerealBold'),
-        local('AirbnbCerealBook'),
-        local('AirbnbCerealExtraBold'),
-        local('AirbnbCerealLight'),
-        local('AirbnbCerealMedium'),
+        font-family: 'AirbnbCerealBlack';
+        font-style: normal;
+        font-weight: normal;
+        src: local('AirbnbCerealBlack'), url(${AirbnbCerealBlack}) format('woff');
+    }
+    @font-face {
+        font-family: 'AirbnbCerealLight';
+        font-style: normal;
+        font-weight: normal;
+        src: local('AirbnbCerealLight'), url(${AirbnbCerealLight}) format('woff');
+    }
+    html, body {
+        font-family: 'AirbnbCerealLight';
+        color: rgb(34, 34, 34);
     }
 `;
+
+export default GlobalFonts;

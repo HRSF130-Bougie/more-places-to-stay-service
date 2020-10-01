@@ -12,20 +12,6 @@ const Image = styled.img`
   margin-bottom: 10px;
   `;
 
-const ImageT = styled.img`
-  display: flex;
-  height: 100%;
-  list-style: none;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-left: 0px;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  min-width: 100%;
-  -ms-scroll-snap-type: x mandatory;
-  scroll-snap-type: x mandatory;
-`;
-
 const AirWrapper = styled.div`
     display: flex;
     height: 100%;
@@ -38,10 +24,9 @@ const AirWrapper = styled.div`
     scroll-snap-type: x mandatory;
     `;
 
-const Describe = styled.div`
-      text-overflow: ellipsis;
-    `;
-
+// const Describe = styled.div`
+//       font-family: 'airbnb';
+//     `;
 
 class ListingHero extends React.Component {
   constructor(props) {
@@ -76,7 +61,7 @@ class ListingHero extends React.Component {
               </span>
             </div>
             <span> {obj.type} • {obj.beds} beds </span>
-            <Describe> {obj.description} </Describe>
+            <div> {obj.description} </div>
           </div>
           <div> ${obj.rate}/ night </div>
         </div>
@@ -86,27 +71,3 @@ class ListingHero extends React.Component {
 }
 
 export default ListingHero;
-
-// console.log(this.props);
-// const { beds, description } = this.props;
-// eslint-disable-next-line react/destructuring-assignment
-// const mappedHero = this.props.seededData.map((obj) =>
-//   <div>
-//     <div onClick={this.handleClick}>
-//       <img src={obj.photo} width="265" alt="" height="177" />
-//       {/* <div> Superhost: {obj.label.superhost.toString()} </div>
-//       <div> Plus: {obj.label.plus.toString()} </div>
-//       <div> Heart: {obj.heart.toString()} </div> */}
-//       <div>
-//         <span>
-//           {obj.popularity.stars}
-//           ({obj.popularity.reviewCount})
-//         </span>
-//       </div>
-//       <span> {obj.type} * {obj.beds} beds </span>
-//       <Describe> {obj.description} </Describe>
-//     </div>
-//     <div> ${obj.rate}/ night </div>
-//   </div>,
-// // eslint-disable-next-line function-paren-newline
-// );
