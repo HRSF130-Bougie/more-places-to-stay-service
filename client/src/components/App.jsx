@@ -11,7 +11,10 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   padding-bottom: 24px;
   margin-left: 353px;
-
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  font-family: 'AirbnbCerealBold';
   `;
 
 class App extends React.Component {
@@ -45,7 +48,7 @@ class App extends React.Component {
     return (
       <div className="More-Places-App">
       <GlobalFonts />
-        <HeaderWrapper>MORE PLACES TO STAY
+        <HeaderWrapper>More Places To Stay
         </HeaderWrapper>
         <Listing seededData={this.state.seededData} />
       </div>

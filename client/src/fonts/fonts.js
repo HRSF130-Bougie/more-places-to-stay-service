@@ -23,6 +23,30 @@ const GlobalFonts = createGlobalStyle`
         font-weight: normal;
         src: local('AirbnbCerealLight'), url(${AirbnbCerealLight}) format('woff');
     }
+    @font-face {
+        font-family: 'AirbnbCerealBold';
+        font-style: normal;
+        font-weight: normal;
+        src: local('AirbnbCerealBold'), url(${AirbnbCerealBold}) format('woff');
+    }
+    @font-face {
+        font-family: 'AirbnbCerealBook';
+        font-style: normal;
+        font-weight: normal;
+        src: local('AirbnbCerealBook'), url(${AirbnbCerealBook}) format('woff');
+    }
+    @font-face {
+        font-family: 'AirbnbCerealExtraBold';
+        font-style: normal;
+        font-weight: normal;
+        src: local('AirbnbCerealExtraBold'), url(${AirbnbCerealExtraBold}) format('woff');
+    }
+    @font-face {
+        font-family: 'AirbnbCerealMedium';
+        font-style: normal;
+        font-weight: normal;
+        src: local('AirbnbCerealMedium'), url(${AirbnbCerealMedium}) format('woff');
+    }
     html, body {
         font-family: 'AirbnbCerealLight';
         color: rgb(34, 34, 34);
