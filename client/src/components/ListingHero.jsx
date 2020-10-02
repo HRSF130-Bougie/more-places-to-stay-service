@@ -12,6 +12,7 @@ const element = <FontAwesomeIcon icon={faStar} />;
 const Image = styled.img`
   width: 265px;
   height: 177px;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
   `;
@@ -21,7 +22,7 @@ const Image = styled.img`
     height: 100%;
     list-style: none;
     // overflow: auto hidden;
-    padding: 10px;
+    padding-right: 20px;
     margin-bottom: 20px;
     margin-top: 0px;
     width: 100%;
@@ -53,7 +54,7 @@ class ListingHero extends React.Component {
     super(props);
 
     this.state = {
-
+      liked: true,
     };
     // This Binding Area
     this.handleClick = this.handleClick.bind(this);
@@ -81,7 +82,7 @@ class ListingHero extends React.Component {
             <TypeWrap> {obj.type} • {obj.beds} beds </TypeWrap>
             <Describe> {obj.description} </Describe>
           </div>
-          <div> ${obj.rate}/ night </div>
+          <div> ${obj.rate} / night </div>
         </div>
       </ListingWrapper>
     );

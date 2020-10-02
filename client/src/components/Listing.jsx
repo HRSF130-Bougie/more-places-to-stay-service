@@ -23,7 +23,7 @@ class Listing extends React.Component {
     super(props);
 
     this.state = {
-
+      liked: true,
     };
   }
 
@@ -37,7 +37,6 @@ class Listing extends React.Component {
             <ListingHero key={index} obj={item} />
           ))
         }
-        {/* <ListingBody dummyData={dummyData} /> */}
       </RowWrapper>
     );
   }
