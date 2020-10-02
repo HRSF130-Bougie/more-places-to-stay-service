@@ -27,6 +27,8 @@ const ComponentWrapper = styled.div`
   background-color: #f7f7f7;
 `;
 
+let scroll = 0;
+
 class App extends React.Component {
   constructor() {
     super();
@@ -34,6 +36,7 @@ class App extends React.Component {
     this.state = {
       seededData: [],
       scrollPosition: 0,
+      motion: scroll,
     };
     // THIS BINDING AREA
     this.getSeededData = this.getSeededData.bind(this);
@@ -56,24 +59,21 @@ class App extends React.Component {
       .catch(console.log);
   }
 
-  // Go to Previous Slides
-  goToPreviousSlide() {
-    document.getElementById('test').style.transform = `translateX(1140px)`;
-  }
-    // if (this.state.scrollPosition > 0 && this.state.index <= 1) {
-    //   this.setState({ scrollPosition: 2 });
-    //   document.getElementById('test').style.transform = `translateX(400px)`;
-    // } else if (this.state.scrollPosition > 1 && this.state.index <= 2) {
-    //   this.setState({ scrollPosition: 2 });
-    //   document.getElementById('test').style.transform = `translateX(400px)`;
-    // } else {
-    //   console.log('End of the road');
-    // }
 
+  // Go to Previous Slides
+  goToPreviousSlide(event) {
+    event.preventDefault();
+    document.getElementById('test').style.transform = `translateX(${scroll + 1140}px)`;
+    scroll += 1140;
+    this.setState({motion: scroll});
+  }
 
   // Go To next slides
-  goToNextSlide() {
-    document.getElementById('test').style.transform = `translateX(-1140px)`;
+  goToNextSlide(event) {
+    event.preventDefault();
+    document.getElementById('test').style.transform = `translateX(${scroll - 1140}px)`;
+    scroll -= 1140;
+    this.setState({motion: scroll});
   }
 
   render() {

@@ -29,15 +29,14 @@ class PreviousButton extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    event.preventDefault();
+  handleClick(event) {
     const { prevSlide } = this.props;
-    prevSlide();
+    prevSlide(event);
   }
 
   render() {
     return (
-      <Previous className='prevSlide' onClick={this.handleClick}> &lt; </Previous>
+      <Previous className='prevSlide' onClick={(event) => this.handleClick(event)}> &lt; </Previous>
     );
   }
 }

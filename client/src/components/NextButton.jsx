@@ -30,14 +30,13 @@ class NextButton extends React.Component {
   }
 
   handleClick(event) {
-    event.preventDefault();
     const { nextSlide } = this.props;
     nextSlide(event);
   }
 
   render() {
     return (
-        <Next className='nextSlide' onClick={this.handleClick}> &gt; </Next>
+        <Next className='nextSlide' onClick={(event) => this.handleClick(event)}> &gt; </Next>
     );
   }
 }

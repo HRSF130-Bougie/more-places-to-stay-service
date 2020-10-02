@@ -31,6 +31,7 @@ const NestedRowWrapper = styled.div`
   width: 100%;
   scroll-snap-type: x mandatory;
   transition: transform 0.75s;
+  position: relative;
   `;
 
 class Listing extends React.Component {
