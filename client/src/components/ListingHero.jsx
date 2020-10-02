@@ -12,6 +12,7 @@ const element = <FontAwesomeIcon icon={faStar} />;
 const Image = styled.img`
   width: 265px;
   height: 177px;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
   `;
@@ -20,12 +21,13 @@ const Image = styled.img`
     display: flex;
     height: 100%;
     list-style: none;
-    // overflow: auto hidden;
-    padding: 10px;
+    ${'' /* overflow: auto hidden; */}
+    padding-right: 20px;
     margin-bottom: 20px;
     margin-top: 0px;
     width: 100%;
     scroll-snap-type: x mandatory;
+    ${'' /* transform: translateX(-1500px); */}
     `;
 
     const ReviewWrap = styled.span`
@@ -53,7 +55,7 @@ class ListingHero extends React.Component {
     super(props);
 
     this.state = {
-
+      liked: true,
     };
     // This Binding Area
     this.handleClick = this.handleClick.bind(this);
@@ -81,7 +83,7 @@ class ListingHero extends React.Component {
             <TypeWrap> {obj.type} • {obj.beds} beds </TypeWrap>
             <Describe> {obj.description} </Describe>
           </div>
-          <div> ${obj.rate}/ night </div>
+          <div> ${obj.rate} / night </div>
         </div>
       </ListingWrapper>
     );
@@ -94,19 +96,3 @@ export default ListingHero;
 <div> Plus: {obj.label.plus.toString()} </div>
 <div> Heart: {obj.heart.toString()} </div> */}
 
-/*
-
-display: inline-flex;
-appearance: none
-margin: 0px;
-padding: 0px;
-border-radius: 50%;
-border: 1px solid;
-outline: none;
-touch-action: manipulation;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-width: 32px;
-height: 32px;
-*/
