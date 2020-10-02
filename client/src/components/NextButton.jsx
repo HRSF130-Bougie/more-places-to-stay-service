@@ -23,22 +23,21 @@ const Next = styled.button`
 class NextButton extends React.Component {
   constructor() {
     super();
-
     this.state = {
-
     };
     // THIS BINDING AREA
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    console.log('clicked!!');
-    document.getElementById('RowWrapper').style.transform = `translateX(1000px)`;
+  handleClick(event) {
+    event.preventDefault();
+    const { nextSlide } = this.props;
+    nextSlide(event);
   }
 
   render() {
     return (
-        <Next onClick={this.handleClick}> &gt; </Next>
+        <Next className='nextSlide' onClick={this.handleClick}> &gt; </Next>
     );
   }
 }

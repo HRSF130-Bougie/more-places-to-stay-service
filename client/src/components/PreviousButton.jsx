@@ -20,20 +20,24 @@ const Previous = styled.button`
   margin-right: 13px;
 `;
 
-
 class PreviousButton extends React.Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
-
     };
     // THIS BINDING AREA
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    event.preventDefault();
+    const { prevSlide } = this.props;
+    prevSlide();
   }
 
   render() {
     return (
-        <Previous> &lt; </Previous>
+      <Previous className='prevSlide' onClick={this.handleClick}> &lt; </Previous>
     );
   }
 }

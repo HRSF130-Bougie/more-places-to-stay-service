@@ -33,11 +33,12 @@ class App extends React.Component {
 
     this.state = {
       seededData: [],
-      activeIndex: 0,
-      length: 0,
+      scrollPosition: 0,
     };
     // THIS BINDING AREA
     this.getSeededData = this.getSeededData.bind(this);
+    this.goToPreviousSlide = this.goToPreviousSlide.bind(this);
+    this.goToNextSlide = this.goToNextSlide.bind(this);
   }
 
   componentDidMount() {
@@ -55,11 +56,24 @@ class App extends React.Component {
       .catch(console.log);
   }
 
-  //Go to Previous Slides
-
-  //Go To next slides
+  // Go to Previous Slides
   goToPreviousSlide() {
+    document.getElementById('test').style.transform = `translateX(1140px)`;
+  }
+    // if (this.state.scrollPosition > 0 && this.state.index <= 1) {
+    //   this.setState({ scrollPosition: 2 });
+    //   document.getElementById('test').style.transform = `translateX(400px)`;
+    // } else if (this.state.scrollPosition > 1 && this.state.index <= 2) {
+    //   this.setState({ scrollPosition: 2 });
+    //   document.getElementById('test').style.transform = `translateX(400px)`;
+    // } else {
+    //   console.log('End of the road');
+    // }
 
+
+  // Go To next slides
+  goToNextSlide() {
+    document.getElementById('test').style.transform = `translateX(-1140px)`;
   }
 
   render() {
@@ -70,8 +84,8 @@ class App extends React.Component {
           <HeaderWrapper>
             More Places To Stay
             <span>
-              <Previous />
-              <Next />
+              <Previous prevSlide={this.goToPreviousSlide} />
+              <Next nextSlide={this.goToNextSlide} />
             </span>
           </HeaderWrapper>
           <Listing seededData={this.state.seededData} />
@@ -82,3 +96,18 @@ class App extends React.Component {
 }
 
 export default App;
+
+// /*
+// .example::-webkit-scrollbar {
+//   display: none;
+// /* Hide scrollbar for Chrome, Safari and Opera */
+// .example::-webkit-scrollbar {
+//   display: none;
+// }
+
+// /* Hide scrollbar for IE, Edge and Firefox */
+// .example {
+//   -ms-overflow-style: none;  /* IE and Edge */
+//   scrollbar-width: none;  /* Firefox */
+// }
+//  */

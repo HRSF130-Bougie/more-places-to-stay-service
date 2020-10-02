@@ -14,29 +14,46 @@ const RowWrapper = styled.div`
     margin-top: 0px;
     margin-left: 353px;
     margin-right: 353px;
-    min-width: 1120px;
+    width: 1120px;
     scroll-snap-type: x mandatory;
+    ${'' /* transform: translateX(-1000px); */}
     `;
+
+const NestedRowWrapper = styled.div`
+  display: flex;
+  height: 304px;
+  list-style: none;
+  ${'' /* overflow: auto hidden; */}
+  // padding-left: 40px;
+  // padding-right: 40px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+  transition: transform 0.75s;
+  `;
 
 class Listing extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      liked: true,
     };
   }
 
   render() {
     // eslint-disable-next-line react/prop-types
+    console.log(this.props);
     const { seededData } = this.props;
     return (
       <RowWrapper>
+      <NestedRowWrapper id="test">
         {
           seededData.map((item, index) => (
             <ListingHero key={index} obj={item} />
           ))
         }
+        </NestedRowWrapper>
       </RowWrapper>
     );
   }

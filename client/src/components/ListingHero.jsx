@@ -21,12 +21,13 @@ const Image = styled.img`
     display: flex;
     height: 100%;
     list-style: none;
-    // overflow: auto hidden;
+    ${'' /* overflow: auto hidden; */}
     padding-right: 20px;
     margin-bottom: 20px;
     margin-top: 0px;
     width: 100%;
     scroll-snap-type: x mandatory;
+    ${'' /* transform: translateX(-1500px); */}
     `;
 
     const ReviewWrap = styled.span`
@@ -95,19 +96,3 @@ export default ListingHero;
 <div> Plus: {obj.label.plus.toString()} </div>
 <div> Heart: {obj.heart.toString()} </div> */}
 
-/*
-
-display: inline-flex;
-appearance: none
-margin: 0px;
-padding: 0px;
-border-radius: 50%;
-border: 1px solid;
-outline: none;
-touch-action: manipulation;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-width: 32px;
-height: 32px;
-*/
