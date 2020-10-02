@@ -40,8 +40,8 @@ class App extends React.Component {
     };
     // THIS BINDING AREA
     this.getSeededData = this.getSeededData.bind(this);
-    this.goToPreviousSlide = this.goToPreviousSlide.bind(this);
-    this.goToNextSlide = this.goToNextSlide.bind(this);
+    // this.goToPreviousSlide = this.goToPreviousSlide.bind(this);
+    // this.goToNextSlide = this.goToNextSlide.bind(this);
   }
 
   componentDidMount() {

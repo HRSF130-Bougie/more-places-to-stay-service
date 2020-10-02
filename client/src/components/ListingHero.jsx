@@ -50,6 +50,19 @@ const Image = styled.img`
       text-overflow: ellipsis;
     `;
 
+    const HeroPhotoWrap = styled.div`
+      display: inline-flex;
+      height: 100%;
+      list-style: none;
+      overflow: auto hidden;
+      padding-left: 0px;
+      margin-bottom: 0px;
+      margin-top: 0px;
+      min-width: 100%;
+      scroll-snap-type: x mandatory;
+      object-fit: cover;
+    `;
+
 class ListingHero extends React.Component {
   constructor(props) {
     super(props);
@@ -72,7 +85,11 @@ class ListingHero extends React.Component {
       <ListingWrapper>
         <div className="entireListing">
           <div className="clickableArea" onClick={this.handleClick}>
-            <Image src={obj.photo} alt="" />
+            <HeroPhotoWrap>
+              <Image src={obj.photo} alt="" />
+              <h4 color="chartreuse">Test1 </h4>
+              <h5 color="chartreuse">Test2</h5>
+            </HeroPhotoWrap>
             <div>
               <ReviewWrap>
                 <FontAwesomeIcon icon={faStar} color="#ff385c" width="6px" height="6px" />&nbsp;
