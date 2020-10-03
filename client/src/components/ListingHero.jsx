@@ -6,8 +6,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-const element = <FontAwesomeIcon icon={faStar} />;
+const element = <FontAwesomeIcon icon={faStar, faHeart} />;
 
 const Image = styled.img`
   width: 265px;
@@ -17,59 +18,89 @@ const Image = styled.img`
   margin-bottom: 10px;
   `;
 
-  const ListingWrapper = styled.div`
-    display: flex;
-    height: 100%;
-    list-style: none;
-    ${'' /* overflow: auto hidden; */}
-    padding-right: 20px;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    width: 100%;
-    scroll-snap-type: x mandatory;
-    ${'' /* transform: translateX(-1500px); */}
-    `;
+const ListingWrapper = styled.div`
+  display: flex;
+  height: 100%;
+  list-style: none;
+  ${'' /* overflow: auto hidden; */}
+  padding-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+  ${'' /* transform: translateX(-1500px); */}
+  `;
 
-    const ReviewWrap = styled.span`
-    font-size: 14px;
-    line-height: 18px;
-    `;
+const ReviewWrap = styled.span`
+  font-size: 14px;
+  line-height: 18px;
+  `;
 
-    const TypeWrap = styled.span`
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    max-height: 20px;
-    overflow: hidden;
-    `;
+const TypeWrap = styled.span`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  max-height: 20px;
+  overflow: hidden;
+  `;
 
-    const Describe = styled.div`
-      width: 265px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    `;
+const Describe = styled.div`
+  width: 265px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
 
-    const HeroPhotoWrap = styled.div`
-      display: inline-flex;
-      height: 100%;
-      list-style: none;
-      overflow: auto hidden;
-      padding-left: 0px;
-      margin-bottom: 0px;
-      margin-top: 0px;
-      min-width: 100%;
-      scroll-snap-type: x mandatory;
-      object-fit: cover;
-    `;
+const HeroPhotoWrap = styled.div`
+  display: inline-flex;
+  height: 100%;
+  list-style: none;
+  overflow: auto hidden;
+  padding-left: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  min-width: 100%;
+  object-fit: cover;
+`;
+
+const SuperRow = styled.span`
+  display: inline-flex;
+  position: absolute;
+  overflow: hidden;
+  padding: 8px;
+`;
+
+const SuperHost = styled.div`
+  position: relative;
+  background: white;
+  font-weight: 550;
+  font-size: 12px;
+  border-radius: 5px;
+  overflow: auto hidden;
+  padding: 5px;
+  margin: 5px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  color: rgb(146, 23, 77);
+  font-family: 'AirbnbCerealMedium';
+`;
+
+const Heart = styled.div`
+  position: relative;
+  font-weight: 550;
+  font-size: 16px;
+  border-radius: 5px;
+  overflow: auto hidden;
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+`;
 
 class ListingHero extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      liked: true,
-    };
     // This Binding Area
     this.handleClick = this.handleClick.bind(this);
   }
@@ -79,7 +110,7 @@ class ListingHero extends React.Component {
   }
 
   render() {
-    const {obj} = this.props;
+    const { obj } = this.props;
 
     return (
       <ListingWrapper>
@@ -87,8 +118,12 @@ class ListingHero extends React.Component {
           <div className="clickableArea" onClick={this.handleClick}>
             <HeroPhotoWrap>
               <Image src={obj.photo} alt="" />
-              <h4 color="chartreuse">Test1 </h4>
-              <h5 color="chartreuse">Test2</h5>
+              <SuperRow>
+                {obj.label.superhost ? <SuperHost type="submit">SUPERHOST </SuperHost> : null}
+                <Heart>
+                  <button class="btn" onClick={() => alert('clicked modal!')}><FontAwesomeIcon icon={faHeart} color="#ff385c" width="6px" height="6px" /></button>
+                </Heart>
+              </SuperRow>
             </HeroPhotoWrap>
             <div>
               <ReviewWrap>

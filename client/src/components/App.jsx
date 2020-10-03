@@ -18,7 +18,7 @@ const HeaderWrapper = styled.div`
   font-weight: 400;
   font-size: 20px;
   line-height: 20px;
-  font-family: 'AirbnbCerealBold';
+  font-family: 'AirbnbCerealMedium';
   `;
 
 const ComponentWrapper = styled.div`
