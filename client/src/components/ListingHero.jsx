@@ -68,6 +68,10 @@ const SuperRow = styled.span`
   position: absolute;
   overflow: hidden;
   padding: 8px;
+  justify-content: space-between;
+  width: 257px;
+  align-items: baseline;
+  object-fit: cover;
 `;
 
 const SuperHost = styled.div`
@@ -88,13 +92,12 @@ const SuperHost = styled.div`
 const Heart = styled.div`
   position: relative;
   font-weight: 550;
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 5px;
   overflow: auto hidden;
   padding: 5px;
   margin-left: 5px;
   margin-right: 5px;
-  margin-top: 5px;
 `;
 
 class ListingHero extends React.Component {
@@ -102,26 +105,32 @@ class ListingHero extends React.Component {
     super(props);
 
     // This Binding Area
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    alert('Click Functionality: Redirect to another Item Detail Page!');
-  }
+  // ======== REACTIVATE ONCE MODAL IN BETTER PLACE =========
+  // handleClick() {
+  //   alert('Click Functionality: Redirect to another Item Detail Page!');
+  // }
+  // ^^^
+  //  "clickableArea" onClick={this.handleClick}
 
   render() {
-    const { obj } = this.props;
+    // console.log(this.props);
+    const { obj, show } = this.props;
+    console.log('show check: ', show);
+
 
     return (
       <ListingWrapper>
         <div className="entireListing">
-          <div className="clickableArea" onClick={this.handleClick}>
+          <div className="clickableArea">
             <HeroPhotoWrap>
               <Image src={obj.photo} alt="" />
               <SuperRow>
-                {obj.label.superhost ? <SuperHost type="submit">SUPERHOST </SuperHost> : null}
+                {obj.label.superhost ? <SuperHost type="submit">SUPERHOST </SuperHost> : <div></div>}
                 <Heart>
-                  <button class="btn" onClick={() => alert('clicked modal!')}><FontAwesomeIcon icon={faHeart} color="#ff385c" width="6px" height="6px" /></button>
+                  <button className="btn" onClick={(e) => show(e)}><FontAwesomeIcon icon={faHeart} color="#ff385c" width="6px" height="6px" /></button>
                 </Heart>
               </SuperRow>
             </HeroPhotoWrap>

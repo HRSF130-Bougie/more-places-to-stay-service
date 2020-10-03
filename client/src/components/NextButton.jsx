@@ -21,8 +21,8 @@ const Next = styled.button`
 `;
 
 class NextButton extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
     };
     // THIS BINDING AREA
@@ -35,8 +35,15 @@ class NextButton extends React.Component {
   }
 
   render() {
+    const { scroll } = this.props;
+    const maxLimit = (scroll <= 2280);
+    console.log(maxLimit);
+
     return (
-        <Next className='nextSlide' onClick={(event) => this.handleClick(event)}> &gt; </Next>
+      // <div>
+      //   { maxLimit ? <Next className="nextSlide" onClick={(event) => this.handleClick(event)}> &gt; </Next> : <div>Test</div> }
+      // </div>
+      <Next className="nextSlide" onClick={(event) => this.handleClick(event)}> &gt; </Next>
     );
   }
 }

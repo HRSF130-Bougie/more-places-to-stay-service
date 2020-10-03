@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Listing from './Listing.jsx';
 import Next from './NextButton.jsx';
 import Previous from './PreviousButton.jsx';
+import Modal from './Modal.jsx';
 // import dummyData from './dummyData';
 import GlobalFonts from '../fonts/fonts';
 
@@ -37,9 +38,11 @@ class App extends React.Component {
       seededData: [],
       scrollPosition: 0,
       motion: scroll,
+      show: false,
     };
     // THIS BINDING AREA
     this.getSeededData = this.getSeededData.bind(this);
+    this.showModal = this.showModal.bind(this);
     // this.goToPreviousSlide = this.goToPreviousSlide.bind(this);
     // this.goToNextSlide = this.goToNextSlide.bind(this);
   }
@@ -65,7 +68,7 @@ class App extends React.Component {
     event.preventDefault();
     document.getElementById('test').style.transform = `translateX(${scroll + 1140}px)`;
     scroll += 1140;
-    this.setState({motion: scroll});
+    this.setState({ motion: scroll });
   }
 
   // Go To next slides
@@ -73,7 +76,16 @@ class App extends React.Component {
     event.preventDefault();
     document.getElementById('test').style.transform = `translateX(${scroll - 1140}px)`;
     scroll -= 1140;
-    this.setState({motion: scroll});
+    this.setState({ motion: scroll });
+  }
+
+  //Show Modal
+  showModal(event) {
+    event.preventDefault();
+    this.setState({
+      ...this.state,
+      show: !this.state.show,
+    });
   }
 
   render() {
@@ -84,12 +96,15 @@ class App extends React.Component {
           <HeaderWrapper>
             More Places To Stay
             <span>
-              <Previous prevSlide={this.goToPreviousSlide} />
-              <Next nextSlide={this.goToNextSlide} />
+              <Previous prevSlide={this.goToPreviousSlide} scroll={this.state.scroll} />
+              <Next nextSlide={this.goToNextSlide} scroll={this.state.scroll} />
             </span>
           </HeaderWrapper>
-          <Listing seededData={this.state.seededData} />
+          <Listing seededData={this.state.seededData} modal={this.showModal} />
         </div>
+        <Modal show={this.state.show} onClose={this.showModal}>
+          This message is from Modal!
+        </Modal>
       </ComponentWrapper>
     );
   }

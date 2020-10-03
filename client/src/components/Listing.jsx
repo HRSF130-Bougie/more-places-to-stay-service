@@ -45,13 +45,13 @@ class Listing extends React.Component {
   render() {
     // eslint-disable-next-line react/prop-types
     console.log(this.props);
-    const { seededData } = this.props;
+    const { seededData, modal } = this.props;
     return (
       <RowWrapper>
       <NestedRowWrapper id="test">
         {
           seededData.map((item, index) => (
-            <ListingHero key={index} obj={item} />
+            <ListingHero key={index} obj={item} show={modal} />
           ))
         }
         </NestedRowWrapper>
