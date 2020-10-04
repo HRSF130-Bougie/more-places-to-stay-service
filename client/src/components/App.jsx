@@ -39,6 +39,7 @@ class App extends React.Component {
       scrollPosition: 0,
       motion: scroll,
       show: false,
+      isSaved: false,
     };
     // THIS BINDING AREA
     this.getSeededData = this.getSeededData.bind(this);
@@ -100,11 +101,13 @@ class App extends React.Component {
               <Next nextSlide={this.goToNextSlide} scroll={this.state.scroll} />
             </span>
           </HeaderWrapper>
-          <Listing seededData={this.state.seededData} modal={this.showModal} />
+          <Listing
+            seededData={this.state.seededData}
+            modal={this.showModal}
+            saved={this.state.isSaved}
+            />
         </div>
-        <Modal show={this.state.show} onClose={this.showModal}>
-          This message is from Modal!
-        </Modal>
+        <Modal show={this.state.show} onClose={this.showModal}></Modal>
       </ComponentWrapper>
     );
   }

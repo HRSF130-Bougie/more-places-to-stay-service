@@ -89,18 +89,20 @@ const SuperHost = styled.div`
   font-family: 'AirbnbCerealMedium';
 `;
 
-const Heart = styled.div`
+const Heart = styled.button`
   position: relative;
   font-weight: 550;
   font-size: 18px;
   border-radius: 5px;
-  overflow: auto hidden;
+  border: none !important;
+  ${'' /* overflow: auto hidden;
   padding: 5px;
   margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 5px; */}
+  background: transparent;
 `;
 
-class ListingHero extends React.Component {
+class ListingHero extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -117,8 +119,8 @@ class ListingHero extends React.Component {
 
   render() {
     // console.log(this.props);
-    const { obj, show } = this.props;
-    console.log('show check: ', show);
+    const { obj, show, saved} = this.props;
+    console.log('isSaved check: ', saved);
 
 
     return (
@@ -129,9 +131,12 @@ class ListingHero extends React.Component {
               <Image src={obj.photo} alt="" />
               <SuperRow>
                 {obj.label.superhost ? <SuperHost type="submit">SUPERHOST </SuperHost> : <div></div>}
-                <Heart>
-                  <button className="btn" onClick={(e) => show(e)}><FontAwesomeIcon icon={faHeart} color="#ff385c" width="6px" height="6px" /></button>
-                </Heart>
+                {saved ?
+                <Heart className="likeBtn" onClick={(e) => show(e)}>
+                  <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: 'rgba(0, 0, 0, 0.5)', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+                </Heart> : <Heart className="likeBtn" onClick={(e) => show(e)}>
+                  <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: '#ff385c', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+                </Heart>}
               </SuperRow>
             </HeroPhotoWrap>
             <div>
@@ -156,4 +161,6 @@ export default ListingHero;
 {/* <div> Superhost: {obj.label.superhost.toString()} </div>
 <div> Plus: {obj.label.plus.toString()} </div>
 <div> Heart: {obj.heart.toString()} </div> */}
+
+{/* <button className="btn" onClick={(e) => show(e)}><FontAwesomeIcon icon={faHeart} color="#ff385c" width="6px" height="6px" /></button> */}
 
