@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import Modal from './Modal.jsx';
 
 const element = <FontAwesomeIcon icon={faStar, faHeart} />;
 
@@ -32,8 +33,10 @@ const ListingWrapper = styled.div`
   `;
 
 const ReviewWrap = styled.span`
+  display: flex;
   font-size: 14px;
   line-height: 18px;
+  margin-bottom: 6px;
   `;
 
 const TypeWrap = styled.span`
@@ -42,6 +45,7 @@ const TypeWrap = styled.span`
   line-height: 20px;
   max-height: 20px;
   overflow: hidden;
+  margin-bottom: 2px;
   `;
 
 const Describe = styled.div`
@@ -102,16 +106,31 @@ const Heart = styled.button`
   background: transparent;
 `;
 
+const Rate = styled.div`
+  display: flex;
+  margin-top: 4px;
+`;
+
+const Price = styled.div`
+  font-family: 'AirbnbCerealMedium' !important;
+`;
+
+const Rev = styled.div`
+  color: rgb(116, 116, 116) !important;
+`;
+
 class ListingHero extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       isSaved: false,
+      show: false,
     };
     // This Binding Area
     // this.handleClick = this.handleClick.bind(this);
     this.saveListing = this.saveListing.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
 
   saveListing(event) {
@@ -122,13 +141,23 @@ class ListingHero extends React.PureComponent {
     });
   }
 
+  // Show Modal
+  showModal(event) {
+    event.preventDefault();
+    this.setState({
+      ...this.state,
+      show: !this.state.show,
+    });
+  }
+
   render() {
     // console.log(this.props);
-    const { obj, show } = this.props;
+    const { obj } = this.props;
     const { isSaved } = this.state;
 
     return (
       <ListingWrapper>
+      <Modal show={this.state.show} onClose={this.showModal} toggle={this.saveListing} ></Modal>
         <div className="entireListing">
           <div className="clickableArea">
             <HeroPhotoWrap>
@@ -137,24 +166,33 @@ class ListingHero extends React.PureComponent {
                 {obj.label.superhost ? <SuperHost type="submit">SUPERHOST </SuperHost> : <div></div>}
                 {isSaved ?
                   <Heart className="likeBtn" onClick={(e) => this.saveListing(e)}>
-                  <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: '#ff385c', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
-                </Heart> :
-                <Heart className="likeBtn" onClick={(e) => this.saveListing(e)}>
-                  <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: 'rgba(0, 0, 0, 0.5)', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
-                </Heart>}
+                    <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: '#ff385c', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+                  </Heart> :
+                  <Heart className="likeBtn" onClick={(event) => this.showModal(event)}>
+                    <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: 'rgba(0, 0, 0, 0.5)', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+                  </Heart>}
               </SuperRow>
             </HeroPhotoWrap>
             <div>
               <ReviewWrap>
                 <FontAwesomeIcon icon={faStar} color="#ff385c" width="6px" height="6px" />&nbsp;
                 {obj.popularity.stars}&nbsp;
-                ({obj.popularity.reviewCount})
+                <Rev>
+                  ({obj.popularity.reviewCount})
+                </Rev>
               </ReviewWrap>
             </div>
             <TypeWrap> {obj.type} • {obj.beds} beds </TypeWrap>
             <Describe> {obj.description} </Describe>
           </div>
-          <div> ${obj.rate} / night </div>
+          <Rate>
+            <Price>
+              ${obj.rate}
+            </Price>&nbsp;
+            <div>
+              / night
+            </div>
+          </Rate>
         </div>
       </ListingWrapper>
     );

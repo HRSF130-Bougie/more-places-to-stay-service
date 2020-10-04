@@ -22,7 +22,7 @@ const ModalStyle = styled.div`
   ${'' /* max-width: 500px; */}
   height: 375px;
   margin: auto;
-  padding: 15px;
+  padding: 10px;
   width: 500px !important;
   max-width: 568px !important;
   border-radius: 12px !important;
@@ -58,6 +58,14 @@ const Header = styled.header`
     font-size: 16px;
     line-height: 20px;
     font-weight: 800;
+`;
+
+const Close = styled.button`
+  border: none !important;
+  background: transparent;
+  font-family: 'AirbnbCerealMedium';
+  font-size: 18px;
+  margin-left: 7px;
 `;
 
 const ModalRow = styled.button`
@@ -103,6 +111,7 @@ class Modal extends React.Component {
     };
     // THIS BINDING AREA
     this.toBeContinued = this.toBeContinued.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   onClose(e) {
@@ -113,8 +122,14 @@ class Modal extends React.Component {
     alert('Over Budget...');
   }
 
+  handleClick(event) {
+    event.preventDefault;
+    console.log(this.props.toggle);
+    this.props.toggle(event);
+  }
+
   render() {
-    const {children} = this.props;
+    const {children, toggle} = this.props;
 
     if (!this.props.show) {
       return null;
@@ -124,14 +139,14 @@ class Modal extends React.Component {
         <ModalStyle>
           {children}
           <Header>
-            <button onClick={(e) => { this.onClose(e);} }> x </button>
+            <Close onClick={(e) => { this.onClose(e);} }> x </Close>
             <div>Save to a list</div>
             <div></div>
           </Header>
           <ModalBoxWrapper>
-            <ModalRow> Dream Homes</ModalRow>
-            <ModalRow> Vacation Places</ModalRow>
-            <ModalRow> Mobile Starred Listings</ModalRow>
+            <ModalRow type="submit" onClick={(e) => this.handleClick(e)}> Dream Homes</ModalRow>
+            <ModalRow type="submit" onClick={(e) => this.handleClick(e)}> Vacation Places</ModalRow>
+            <ModalRow type="submit" onClick={(e) => this.handleClick(e)}> Mobile Starred Listings</ModalRow>
           </ModalBoxWrapper>
           <Footer>
             <FootButton onClick={this.toBeContinued}> Create a list</FootButton>

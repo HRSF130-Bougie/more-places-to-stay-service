@@ -32,6 +32,7 @@ const NestedRowWrapper = styled.div`
   scroll-snap-type: x mandatory;
   transition: transform 0.75s;
   position: relative;
+  &::-webkit-scrollbar { width: 0 !important };
   `;
 
 class Listing extends React.Component {
@@ -45,13 +46,13 @@ class Listing extends React.Component {
   render() {
     // eslint-disable-next-line react/prop-types
     // console.log(this.props);
-    const { seededData, modal, saved} = this.props;
+    const { seededData, saved} = this.props;
     return (
       <RowWrapper>
       <NestedRowWrapper id="test">
         {
           seededData.map((item, index) => (
-            <ListingHero key={index} obj={item} show={modal} />
+            <ListingHero key={index} obj={item} />
           ))
         }
         </NestedRowWrapper>

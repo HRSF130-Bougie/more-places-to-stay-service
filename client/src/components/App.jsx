@@ -28,6 +28,22 @@ const ComponentWrapper = styled.div`
   background-color: #f7f7f7;
 `;
 
+const ButtonWrapper = styled.span`
+  display: inline-flex;
+  position: relative;
+  ${'' /* justify-content: flex-end; */}
+`;
+
+const PageGuide = styled.div`
+    color: rgb(34, 34, 34);
+    font-family: 'AirbnbCerealLight';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    margin-right: 16px;
+    padding-top: 8px;
+`;
+
 let scroll = 0;
 
 class App extends React.Component {
@@ -38,12 +54,12 @@ class App extends React.Component {
       seededData: [],
       scrollPosition: 0,
       motion: scroll,
+      page: 1,
       show: false,
       isSaved: false,
     };
     // THIS BINDING AREA
     this.getSeededData = this.getSeededData.bind(this);
-    this.showModal = this.showModal.bind(this);
     this.goToPreviousSlide = this.goToPreviousSlide.bind(this);
     this.goToNextSlide = this.goToNextSlide.bind(this);
   }
@@ -70,13 +86,13 @@ class App extends React.Component {
     if (scroll === 0) {
       document.getElementById('test').style.transform = `translateX(${scroll - 2280}px)`;
       scroll = -2280;
-      this.setState({ motion: scroll });
+      this.setState({ motion: scroll, page: 3 });
     }
 
     else if (scroll === -1140 || scroll === -2280) {
       document.getElementById('test').style.transform = `translateX(${scroll + 1140}px)`;
       scroll += 1140;
-      this.setState({ motion: scroll });
+      this.setState({ motion: scroll, page: (this.state.page - 1) });
     }
   }
 
@@ -86,24 +102,24 @@ class App extends React.Component {
     if (scroll === -2280) {
       document.getElementById('test').style.transform = `translateX(${scroll + 2280}px)`;
       scroll = 0;
-      this.setState({ motion: scroll });
+      this.setState({ motion: scroll, page: 1 });
     }
 
     else if (scroll === -1140 || scroll === 0) {
       document.getElementById('test').style.transform = `translateX(${scroll - 1140}px)`;
       scroll -= 1140;
-      this.setState({ motion: scroll });
+      this.setState({ motion: scroll, page: (this.state.page + 1) });
     }
   }
 
-  // Show Modal
-  showModal(event) {
-    event.preventDefault();
-    this.setState({
-      ...this.state,
-      show: !this.state.show,
-    });
-  }
+  // // Show Modal
+  // showModal(event) {
+  //   event.preventDefault();
+  //   this.setState({
+  //     ...this.state,
+  //     show: !this.state.show,
+  //   });
+  // }
 
   render() {
     return (
@@ -112,32 +128,17 @@ class App extends React.Component {
           <GlobalFonts />
           <HeaderWrapper>
             More Places To Stay
-            <span>
+            <ButtonWrapper>
+              <PageGuide> {this.state.page} / 3 </PageGuide>
               <Previous prevSlide={this.goToPreviousSlide} scroll={this.state.scroll} />
               <Next nextSlide={this.goToNextSlide} scroll={this.state.scroll} />
-            </span>
+            </ButtonWrapper>
           </HeaderWrapper>
           <Listing seededData={this.state.seededData} modal={this.showModal} />
         </div>
-        <Modal show={this.state.show} onClose={this.showModal}></Modal>
       </ComponentWrapper>
     );
   }
 }
 
 export default App;
-
-// /*
-// .example::-webkit-scrollbar {
-//   display: none;
-// /* Hide scrollbar for Chrome, Safari and Opera */
-// .example::-webkit-scrollbar {
-//   display: none;
-// }
-
-// /* Hide scrollbar for IE, Edge and Firefox */
-// .example {
-//   -ms-overflow-style: none;  /* IE and Edge */
-//   scrollbar-width: none;  /* Firefox */
-// }
-//  */
