@@ -106,22 +106,26 @@ class ListingHero extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.state = {
+      isSaved: false,
+    };
     // This Binding Area
     // this.handleClick = this.handleClick.bind(this);
+    this.saveListing = this.saveListing.bind(this);
   }
 
-  // ======== REACTIVATE ONCE MODAL IN BETTER PLACE =========
-  // handleClick() {
-  //   alert('Click Functionality: Redirect to another Item Detail Page!');
-  // }
-  // ^^^
-  //  "clickableArea" onClick={this.handleClick}
+  saveListing(event) {
+    event.preventDefault();
+    const { isSaved } = this.state;
+    this.setState({
+      isSaved: !isSaved,
+    });
+  }
 
   render() {
     // console.log(this.props);
-    const { obj, show, saved} = this.props;
-    console.log('isSaved check: ', saved);
-
+    const { obj, show } = this.props;
+    const { isSaved } = this.state;
 
     return (
       <ListingWrapper>
@@ -131,11 +135,12 @@ class ListingHero extends React.PureComponent {
               <Image src={obj.photo} alt="" />
               <SuperRow>
                 {obj.label.superhost ? <SuperHost type="submit">SUPERHOST </SuperHost> : <div></div>}
-                {saved ?
-                <Heart className="likeBtn" onClick={(e) => show(e)}>
-                  <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: 'rgba(0, 0, 0, 0.5)', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
-                </Heart> : <Heart className="likeBtn" onClick={(e) => show(e)}>
+                {isSaved ?
+                  <Heart className="likeBtn" onClick={(e) => this.saveListing(e)}>
                   <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: '#ff385c', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+                </Heart> :
+                <Heart className="likeBtn" onClick={(e) => this.saveListing(e)}>
+                  <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: 'rgba(0, 0, 0, 0.5)', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
                 </Heart>}
               </SuperRow>
             </HeroPhotoWrap>
@@ -158,9 +163,9 @@ class ListingHero extends React.PureComponent {
 
 export default ListingHero;
 
-{/* <div> Superhost: {obj.label.superhost.toString()} </div>
-<div> Plus: {obj.label.plus.toString()} </div>
-<div> Heart: {obj.heart.toString()} </div> */}
-
-{/* <button className="btn" onClick={(e) => show(e)}><FontAwesomeIcon icon={faHeart} color="#ff385c" width="6px" height="6px" /></button> */}
-
+// ======== REACTIVATE ONCE MODAL IN BETTER PLACE =========
+  // handleClick() {
+  //   alert('Click Functionality: Redirect to another Item Detail Page!');
+  // }
+  // ^^^
+  //  "clickableArea" onClick={this.handleClick}

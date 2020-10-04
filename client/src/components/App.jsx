@@ -44,8 +44,8 @@ class App extends React.Component {
     // THIS BINDING AREA
     this.getSeededData = this.getSeededData.bind(this);
     this.showModal = this.showModal.bind(this);
-    // this.goToPreviousSlide = this.goToPreviousSlide.bind(this);
-    // this.goToNextSlide = this.goToNextSlide.bind(this);
+    this.goToPreviousSlide = this.goToPreviousSlide.bind(this);
+    this.goToNextSlide = this.goToNextSlide.bind(this);
   }
 
   componentDidMount() {
@@ -63,24 +63,40 @@ class App extends React.Component {
       .catch(console.log);
   }
 
-
   // Go to Previous Slides
   goToPreviousSlide(event) {
     event.preventDefault();
-    document.getElementById('test').style.transform = `translateX(${scroll + 1140}px)`;
-    scroll += 1140;
-    this.setState({ motion: scroll });
+    console.log(scroll);
+    if (scroll === 0) {
+      document.getElementById('test').style.transform = `translateX(${scroll - 2280}px)`;
+      scroll = -2280;
+      this.setState({ motion: scroll });
+    }
+
+    else if (scroll === -1140 || scroll === -2280) {
+      document.getElementById('test').style.transform = `translateX(${scroll + 1140}px)`;
+      scroll += 1140;
+      this.setState({ motion: scroll });
+    }
   }
 
   // Go To next slides
   goToNextSlide(event) {
     event.preventDefault();
-    document.getElementById('test').style.transform = `translateX(${scroll - 1140}px)`;
-    scroll -= 1140;
-    this.setState({ motion: scroll });
+    if (scroll === -2280) {
+      document.getElementById('test').style.transform = `translateX(${scroll + 2280}px)`;
+      scroll = 0;
+      this.setState({ motion: scroll });
+    }
+
+    else if (scroll === -1140 || scroll === 0) {
+      document.getElementById('test').style.transform = `translateX(${scroll - 1140}px)`;
+      scroll -= 1140;
+      this.setState({ motion: scroll });
+    }
   }
 
-  //Show Modal
+  // Show Modal
   showModal(event) {
     event.preventDefault();
     this.setState({
@@ -101,11 +117,7 @@ class App extends React.Component {
               <Next nextSlide={this.goToNextSlide} scroll={this.state.scroll} />
             </span>
           </HeaderWrapper>
-          <Listing
-            seededData={this.state.seededData}
-            modal={this.showModal}
-            saved={this.state.isSaved}
-            />
+          <Listing seededData={this.state.seededData} modal={this.showModal} />
         </div>
         <Modal show={this.state.show} onClose={this.showModal}></Modal>
       </ComponentWrapper>

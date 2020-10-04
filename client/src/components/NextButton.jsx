@@ -35,9 +35,9 @@ class NextButton extends React.Component {
   }
 
   render() {
-    const { scroll } = this.props;
-    const maxLimit = (scroll <= 2280);
-    console.log(maxLimit);
+    // const { scroll } = this.props;
+    // const maxLimit = (scroll <= 2280);
+    // console.log(maxLimit);
 
     return (
       // <div>
