@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/jsx-wrap-multilines */
@@ -124,21 +125,16 @@ class ListingHero extends React.PureComponent {
     super(props);
 
     this.state = {
-      isSaved: false,
       show: false,
     };
     // This Binding Area
     // this.handleClick = this.handleClick.bind(this);
-    this.saveListing = this.saveListing.bind(this);
     this.showModal = this.showModal.bind(this);
   }
 
   saveListing(event) {
     event.preventDefault();
-    const { isSaved } = this.state;
-    this.setState({
-      isSaved: !isSaved,
-    });
+
   }
 
   // Show Modal
@@ -151,24 +147,22 @@ class ListingHero extends React.PureComponent {
   }
 
   render() {
-    // console.log(this.props);
-    const { obj } = this.props;
+    const { obj, initToggle, modal, index, unHeartListing } = this.props;
     const { isSaved } = this.state;
 
     return (
       <ListingWrapper>
-      <Modal show={this.state.show} onClose={this.showModal} toggle={this.saveListing} ></Modal>
         <div className="entireListing">
           <div className="clickableArea">
             <HeroPhotoWrap>
               <Image src={obj.photo} alt="" />
               <SuperRow>
                 {obj.label.superhost ? <SuperHost type="submit">SUPERHOST </SuperHost> : <div></div>}
-                {isSaved ?
-                  <Heart className="likeBtn" onClick={(e) => this.saveListing(e)}>
+                {initToggle ?
+                  <Heart className="likeBtn" onClick={(e) => unHeartListing(e, index)}>
                     <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: '#ff385c', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
                   </Heart> :
-                  <Heart className="likeBtn" onClick={(event) => this.showModal(event)}>
+                  <Heart className="likeBtn" onClick={(e) => modal(e, index)}>
                     <svg viewBox="0 0 32 32" focusable="false" style={{display: 'block', fill: 'rgba(0, 0, 0, 0.5)', height: '24px', width: '24px', stroke: 'rgb(255, 255, 255)', overflow: 'visible'}}><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
                   </Heart>}
               </SuperRow>
@@ -200,10 +194,3 @@ class ListingHero extends React.PureComponent {
 }
 
 export default ListingHero;
-
-// ======== REACTIVATE ONCE MODAL IN BETTER PLACE =========
-  // handleClick() {
-  //   alert('Click Functionality: Redirect to another Item Detail Page!');
-  // }
-  // ^^^
-  //  "clickableArea" onClick={this.handleClick}

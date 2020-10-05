@@ -60,7 +60,7 @@ const initializeData = () => {
         }),
       },
       type: listingType[Math.floor(Math.random() * listingType.length)],
-      heart: faker.random.boolean(),
+      heart: false,
       beds: faker.random.number({
         min: 1,
         max: 8,

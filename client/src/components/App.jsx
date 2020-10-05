@@ -56,12 +56,16 @@ class App extends React.Component {
       motion: scroll,
       page: 1,
       show: false,
-      isSaved: false,
+      heart: false,
+      currentIndex: 0,
     };
     // THIS BINDING AREA
     this.getSeededData = this.getSeededData.bind(this);
+    this.showModal = this.showModal.bind(this);
     this.goToPreviousSlide = this.goToPreviousSlide.bind(this);
     this.goToNextSlide = this.goToNextSlide.bind(this);
+    this.unHeartListing = this.unHeartListing.bind(this);
+    this.heartListing = this.heartListing.bind(this);
   }
 
   componentDidMount() {
@@ -112,14 +116,32 @@ class App extends React.Component {
     }
   }
 
-  // // Show Modal
-  // showModal(event) {
-  //   event.preventDefault();
-  //   this.setState({
-  //     ...this.state,
-  //     show: !this.state.show,
-  //   });
-  // }
+  // Show Modal
+  showModal(event, index) {
+    event.preventDefault();
+    this.setState({
+      ...this.state,
+      show: !this.state.show,
+      currentIndex: index,
+    });
+  }
+
+  unHeartListing(event, index) {
+    event.preventDefault();
+    const {seededData} = this.state;
+    seededData[index].heart = false;
+    this.setState({
+      seededData,
+    });
+  }
+
+  heartListing(index) {
+    const {seededData} = this.state;
+    seededData[index].heart = true;
+    this.setState({
+      seededData,
+    });
+  }
 
   render() {
     return (
@@ -134,8 +156,10 @@ class App extends React.Component {
               <Next nextSlide={this.goToNextSlide} scroll={this.state.scroll} />
             </ButtonWrapper>
           </HeaderWrapper>
-          <Listing seededData={this.state.seededData} modal={this.showModal} />
+          <Listing seededData={this.state.seededData} modal={this.showModal} unHeartListing={this.unHeartListing} />
         </div>
+        {this.state.show &&
+        <Modal show={this.state.show} onClose={this.showModal} heartListing={this.heartListing} index={this.state.currentIndex} ></Modal>}
       </ComponentWrapper>
     );
   }

@@ -122,14 +122,15 @@ class Modal extends React.Component {
     alert('Over Budget...');
   }
 
-  handleClick(event) {
-    event.preventDefault;
-    console.log(this.props.toggle);
-    this.props.toggle(event);
+  handleClick(event, index) {
+    console.log('HANDLECLICK: ', index);
+    event.preventDefault();
+    this.props.heartListing(index);
   }
 
   render() {
-    const {children, toggle} = this.props;
+    const {children, toggle, heartListing, index} = this.props;
+    console.log('MODALRENDER: ', index);
 
     if (!this.props.show) {
       return null;
@@ -144,9 +145,9 @@ class Modal extends React.Component {
             <div></div>
           </Header>
           <ModalBoxWrapper>
-            <ModalRow type="submit" onClick={(e) => this.handleClick(e)}> Dream Homes</ModalRow>
-            <ModalRow type="submit" onClick={(e) => this.handleClick(e)}> Vacation Places</ModalRow>
-            <ModalRow type="submit" onClick={(e) => this.handleClick(e)}> Mobile Starred Listings</ModalRow>
+            <ModalRow type="submit" onClick={(e) => this.handleClick(e, index)}> Dream Homes</ModalRow>
+            <ModalRow type="submit" onClick={(e) => this.handleClick(e, index)}> Vacation Places</ModalRow>
+            <ModalRow type="submit" onClick={(e) => this.handleClick(e, index)}> Mobile Starred Listings</ModalRow>
           </ModalBoxWrapper>
           <Footer>
             <FootButton onClick={this.toBeContinued}> Create a list</FootButton>
