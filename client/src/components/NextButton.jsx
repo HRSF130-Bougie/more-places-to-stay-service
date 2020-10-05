@@ -17,7 +17,6 @@ const Next = styled.button`
   width: 32px;
   height: 32px;
   box-shadow: 0px 0px 12px #888888;
-  margin-right: 353px;
 `;
 
 class NextButton extends React.Component {

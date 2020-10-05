@@ -132,11 +132,6 @@ class ListingHero extends React.PureComponent {
     this.showModal = this.showModal.bind(this);
   }
 
-  saveListing(event) {
-    event.preventDefault();
-
-  }
-
   // Show Modal
   showModal(event) {
     event.preventDefault();
@@ -148,7 +143,6 @@ class ListingHero extends React.PureComponent {
 
   render() {
     const { obj, initToggle, modal, index, unHeartListing } = this.props;
-    const { isSaved } = this.state;
 
     return (
       <ListingWrapper>

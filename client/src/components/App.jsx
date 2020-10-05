@@ -15,7 +15,7 @@ const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 24px;
-  margin-left: 353px;
+  ${'' /* margin-left: 353px; */}
   font-weight: 400;
   font-size: 20px;
   line-height: 20px;
@@ -26,6 +26,16 @@ const ComponentWrapper = styled.div`
   padding-top: 48px;
   padding-bottom: 48px;
   background-color: #f7f7f7;
+`;
+
+const MainWrapper = styled.div`
+  max-width: 1120px;
+  height: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+  display: block;
+  justify-content: space-between;
 `;
 
 const ButtonWrapper = styled.span`
@@ -128,7 +138,7 @@ class App extends React.Component {
 
   unHeartListing(event, index) {
     event.preventDefault();
-    const {seededData} = this.state;
+    const { seededData } = this.state;
     seededData[index].heart = false;
     this.setState({
       seededData,
@@ -136,7 +146,7 @@ class App extends React.Component {
   }
 
   heartListing(index) {
-    const {seededData} = this.state;
+    const { seededData } = this.state;
     seededData[index].heart = true;
     this.setState({
       seededData,
@@ -146,7 +156,7 @@ class App extends React.Component {
   render() {
     return (
       <ComponentWrapper>
-        <div className="More-Places-App">
+        <MainWrapper className="More-Places-App">
           <GlobalFonts />
           <HeaderWrapper>
             More Places To Stay
@@ -157,7 +167,7 @@ class App extends React.Component {
             </ButtonWrapper>
           </HeaderWrapper>
           <Listing seededData={this.state.seededData} modal={this.showModal} unHeartListing={this.unHeartListing} />
-        </div>
+        </MainWrapper>
         {this.state.show &&
         <Modal show={this.state.show} onClose={this.showModal} heartListing={this.heartListing} index={this.state.currentIndex} ></Modal>}
       </ComponentWrapper>

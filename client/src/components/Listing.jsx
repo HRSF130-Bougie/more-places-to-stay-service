@@ -12,8 +12,9 @@ const RowWrapper = styled.div`
     // padding-right: 40px;
     margin-bottom: 0px;
     margin-top: 0px;
-    margin-left: 353px;
-    margin-right: 353px;
+    ${'' /* margin-left: 353px;
+    margin-right: 353px; */}
+    margin: auto;
     width: 1120px;
     scroll-snap-type: x mandatory;
     ${'' /* transform: translateX(-1000px); */}

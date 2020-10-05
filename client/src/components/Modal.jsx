@@ -123,14 +123,12 @@ class Modal extends React.Component {
   }
 
   handleClick(event, index) {
-    console.log('HANDLECLICK: ', index);
     event.preventDefault();
     this.props.heartListing(index);
   }
 
   render() {
     const {children, toggle, heartListing, index} = this.props;
-    console.log('MODALRENDER: ', index);
 
     if (!this.props.show) {
       return null;
