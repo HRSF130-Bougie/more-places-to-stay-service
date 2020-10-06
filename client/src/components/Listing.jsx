@@ -12,8 +12,9 @@ const RowWrapper = styled.div`
     // padding-right: 40px;
     margin-bottom: 0px;
     margin-top: 0px;
-    margin-left: 353px;
-    margin-right: 353px;
+    ${'' /* margin-left: 353px;
+    margin-right: 353px; */}
+    margin: auto;
     width: 1120px;
     scroll-snap-type: x mandatory;
     ${'' /* transform: translateX(-1000px); */}
@@ -32,6 +33,7 @@ const NestedRowWrapper = styled.div`
   scroll-snap-type: x mandatory;
   transition: transform 0.75s;
   position: relative;
+  &::-webkit-scrollbar { width: 0 !important };
   `;
 
 class Listing extends React.Component {
@@ -44,14 +46,14 @@ class Listing extends React.Component {
 
   render() {
     // eslint-disable-next-line react/prop-types
-    console.log(this.props);
-    const { seededData } = this.props;
+    // console.log(this.props);
+    const { seededData, saved, modal, unHeartListing} = this.props;
     return (
       <RowWrapper>
       <NestedRowWrapper id="test">
         {
           seededData.map((item, index) => (
-            <ListingHero key={index} obj={item} />
+            <ListingHero key={Math.random()} index={index} obj={item} modal={modal} initToggle={seededData[index].heart} unHeartListing={unHeartListing} />
           ))
         }
         </NestedRowWrapper>

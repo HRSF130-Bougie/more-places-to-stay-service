@@ -46,7 +46,7 @@ const initializeData = () => {
 
   // =========== CREATE SEEDED RECORDS==============
   // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 16; i++) {
     const listingRecord = new SingleListing({
       description: dummy.randomDescription(),
       photo: awsURL[Math.floor(Math.random() * awsURL.length)],
@@ -60,7 +60,7 @@ const initializeData = () => {
         }),
       },
       type: listingType[Math.floor(Math.random() * listingType.length)],
-      heart: faker.random.boolean(),
+      heart: false,
       beds: faker.random.number({
         min: 1,
         max: 8,
@@ -90,6 +90,7 @@ const retrieveData = (callback) => {
   // initializeData();
   console.log('reached back end side');
   SingleListing.find({})
+    .then((response) => response.slice(0, 12))
     .then((response) => {
       callback(null, response);
     })
