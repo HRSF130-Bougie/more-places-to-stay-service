@@ -66,6 +66,9 @@ export const Close = styled.button`
   font-family: 'AirbnbCerealMedium';
   font-size: 18px;
   margin-left: 7px;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const ModalRow = styled.button`
@@ -103,4 +106,7 @@ export const FootButton = styled.button`
   text-decoration:underline;
   background: transparent;
   border: none !important;
+  &:focus {
+    outline: none;
+  }
 `;

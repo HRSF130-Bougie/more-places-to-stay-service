@@ -87,6 +87,9 @@ export const Heart = styled.button`
   margin-left: 5px;
   margin-right: 5px; */}
   background: transparent;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Rate = styled.div`
