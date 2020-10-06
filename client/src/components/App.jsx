@@ -6,54 +6,12 @@ import Listing from './Listing.jsx';
 import Next from './NextButton.jsx';
 import Previous from './PreviousButton.jsx';
 import Modal from './Modal.jsx';
-// import dummyData from './dummyData';
 import GlobalFonts from '../fonts/fonts';
+import { HeaderWrapper, ComponentWrapper, MainWrapper, ButtonWrapper, PageGuide } from './Styled/AppStyle.jsx';
 
 const axios = require('axios');
 
-const HeaderWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 24px;
-  ${'' /* margin-left: 353px; */}
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 20px;
-  font-family: 'AirbnbCerealMedium';
-  `;
-
-const ComponentWrapper = styled.div`
-  padding-top: 48px;
-  padding-bottom: 48px;
-  background-color: #f7f7f7;
-`;
-
-const MainWrapper = styled.div`
-  max-width: 1120px;
-  height: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;
-  display: block;
-  justify-content: space-between;
-`;
-
-const ButtonWrapper = styled.span`
-  display: inline-flex;
-  position: relative;
-  ${'' /* justify-content: flex-end; */}
-`;
-
-const PageGuide = styled.div`
-    color: rgb(34, 34, 34);
-    font-family: 'AirbnbCerealLight';
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    margin-right: 16px;
-    padding-top: 8px;
-`;
-
+// Variable Scroll used to keep track of scroll position in Next/Previous Slide functions
 let scroll = 0;
 
 class App extends React.Component {
@@ -62,14 +20,13 @@ class App extends React.Component {
 
     this.state = {
       seededData: [],
-      scrollPosition: 0,
       motion: scroll,
       page: 1,
       show: false,
       heart: false,
       currentIndex: 0,
     };
-    // THIS BINDING AREA
+
     this.getSeededData = this.getSeededData.bind(this);
     this.showModal = this.showModal.bind(this);
     this.goToPreviousSlide = this.goToPreviousSlide.bind(this);
@@ -82,7 +39,7 @@ class App extends React.Component {
     this.getSeededData();
   }
 
-  // axios get request
+  // Axios GET request
   getSeededData() {
     axios.get('/api/more-places')
       .then((results) => results.data)
@@ -93,10 +50,9 @@ class App extends React.Component {
       .catch(console.log);
   }
 
-  // Go to Previous Slides
+  // Go to PREVIOUS VIEW
   goToPreviousSlide(event) {
     event.preventDefault();
-    console.log(scroll);
     if (scroll === 0) {
       document.getElementById('test').style.transform = `translateX(${scroll - 2280}px)`;
       scroll = -2280;
@@ -110,7 +66,7 @@ class App extends React.Component {
     }
   }
 
-  // Go To next slides
+  // Go To NEXT VIEW
   goToNextSlide(event) {
     event.preventDefault();
     if (scroll === -2280) {
@@ -136,6 +92,7 @@ class App extends React.Component {
     });
   }
 
+  // Toggle Empty Heart Icon
   unHeartListing(event, index) {
     event.preventDefault();
     const { seededData } = this.state;
@@ -145,6 +102,7 @@ class App extends React.Component {
     });
   }
 
+  // Toggle Full Heart Icon
   heartListing(index) {
     const { seededData } = this.state;
     seededData[index].heart = true;

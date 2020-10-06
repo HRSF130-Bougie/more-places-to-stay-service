@@ -20,25 +20,16 @@ const Previous = styled.button`
   margin-right: 13px;
 `;
 
-class PreviousButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-    // THIS BINDING AREA
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(event) {
-    const { prevSlide } = this.props;
+const PreviousButton = (props) => {
+  const handleClick = (event) => {
+    event.preventDefault();
+    const { prevSlide } = props;
     prevSlide(event);
-  }
+  };
 
-  render() {
-    return (
-      <Previous className='prevSlide' onClick={(event) => this.handleClick(event)}> &lt; </Previous>
-    );
-  }
-}
+  return (
+    <Previous className='prevSlide' onClick={(event) => handleClick(event)}> &lt; </Previous>
+  );
+};
 
 export default PreviousButton;

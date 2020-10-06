@@ -19,32 +19,16 @@ const Next = styled.button`
   box-shadow: 0px 0px 12px #888888;
 `;
 
-class NextButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-    // THIS BINDING AREA
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(event) {
-    const { nextSlide } = this.props;
+const NextButton = (props) => {
+  const handleClick = (event) => {
+    event.preventDefault();
+    const { nextSlide } = props;
     nextSlide(event);
-  }
+  };
 
-  render() {
-    // const { scroll } = this.props;
-    // const maxLimit = (scroll <= 2280);
-    // console.log(maxLimit);
-
-    return (
-      // <div>
-      //   { maxLimit ? <Next className="nextSlide" onClick={(event) => this.handleClick(event)}> &gt; </Next> : <div>Test</div> }
-      // </div>
-      <Next className="nextSlide" onClick={(event) => this.handleClick(event)}> &gt; </Next>
-    );
-  }
-}
+  return (
+    <Next className="nextSlide" onClick={(event) => handleClick(event)}> &gt; </Next>
+  );
+};
 
 export default NextButton;

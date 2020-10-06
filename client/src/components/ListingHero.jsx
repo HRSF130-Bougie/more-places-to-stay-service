@@ -9,9 +9,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import Modal from './Modal.jsx';
+import { ListingWrapper, ReviewWrap, TypeWrap, Describe, HeroPhotoWrap, SuperRow, SuperHost, Heart, Rate, Price, Rev } from './Styled/ListingHeroStyle.jsx';
 
+// Destructure icons to be rendered in this component below
 const element = <FontAwesomeIcon icon={faStar, faHeart} />;
 
+// Image styling. Other styling found in ListingHeroStyle
 const Image = styled.img`
   width: 265px;
   height: 177px;
@@ -20,106 +23,6 @@ const Image = styled.img`
   margin-bottom: 10px;
   `;
 
-const ListingWrapper = styled.div`
-  display: flex;
-  height: 100%;
-  list-style: none;
-  ${'' /* overflow: auto hidden; */}
-  padding-right: 20px;
-  margin-bottom: 20px;
-  margin-top: 0px;
-  width: 100%;
-  scroll-snap-type: x mandatory;
-  ${'' /* transform: translateX(-1500px); */}
-  `;
-
-const ReviewWrap = styled.span`
-  display: flex;
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: 6px;
-  `;
-
-const TypeWrap = styled.span`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  max-height: 20px;
-  overflow: hidden;
-  margin-bottom: 2px;
-  `;
-
-const Describe = styled.div`
-  width: 265px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
-const HeroPhotoWrap = styled.div`
-  display: inline-flex;
-  height: 100%;
-  list-style: none;
-  overflow: auto hidden;
-  padding-left: 0px;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  min-width: 100%;
-  object-fit: cover;
-`;
-
-const SuperRow = styled.span`
-  display: inline-flex;
-  position: absolute;
-  overflow: hidden;
-  padding: 8px;
-  justify-content: space-between;
-  width: 257px;
-  align-items: baseline;
-  object-fit: cover;
-`;
-
-const SuperHost = styled.div`
-  position: relative;
-  background: white;
-  font-weight: 550;
-  font-size: 12px;
-  border-radius: 5px;
-  overflow: auto hidden;
-  padding: 5px;
-  margin: 5px;
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 0.5px solid rgba(0, 0, 0, 0.2);
-  color: rgb(146, 23, 77);
-  font-family: 'AirbnbCerealMedium';
-`;
-
-const Heart = styled.button`
-  position: relative;
-  font-weight: 550;
-  font-size: 18px;
-  border-radius: 5px;
-  border: none !important;
-  ${'' /* overflow: auto hidden;
-  padding: 5px;
-  margin-left: 5px;
-  margin-right: 5px; */}
-  background: transparent;
-`;
-
-const Rate = styled.div`
-  display: flex;
-  margin-top: 4px;
-`;
-
-const Price = styled.div`
-  font-family: 'AirbnbCerealMedium' !important;
-`;
-
-const Rev = styled.div`
-  color: rgb(116, 116, 116) !important;
-`;
-
 class ListingHero extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -127,18 +30,6 @@ class ListingHero extends React.PureComponent {
     this.state = {
       show: false,
     };
-    // This Binding Area
-    // this.handleClick = this.handleClick.bind(this);
-    this.showModal = this.showModal.bind(this);
-  }
-
-  // Show Modal
-  showModal(event) {
-    event.preventDefault();
-    this.setState({
-      ...this.state,
-      show: !this.state.show,
-    });
   }
 
   render() {
