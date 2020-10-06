@@ -77,6 +77,9 @@ export const ModalRow = styled.button`
   border-radius: 8px !important;
   border: none !important;
   background: transparent;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Footer = styled.div`
