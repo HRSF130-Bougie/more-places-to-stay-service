@@ -3,9 +3,12 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../database');
+const cors = require('cors')
 
 const app = express();
 const port = 3004;
+
+app.use(cors());
 
 // Body Parser & URL encoded
 app.use(bodyParser.urlencoded({ extended: false }));
