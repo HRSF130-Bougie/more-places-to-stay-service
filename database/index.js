@@ -46,7 +46,7 @@ const initializeData = () => {
 
   // =========== CREATE SEEDED RECORDS==============
   // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < 100; i++) {
     const listingRecord = new SingleListing({
       description: dummy.randomDescription(),
       photo: awsURL[Math.floor(Math.random() * awsURL.length)],
