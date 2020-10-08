@@ -15,21 +15,23 @@ export const ModalBackdrop = styled.section`
   align-items: flex-end; */}
   justify-content: center;
 `;
-
+// IF I GO BACKWARDS, GO JUST RESET MODAL STYLE THEN STOP!
 export const ModalStyle = styled.div`
-  position: 'absolute';
-  background-color: white;
-  ${'' /* max-width: 500px; */}
-  min-height: 375px;
-  margin: auto;
-  padding: 10px;
-  width: 500px !important;
-  max-width: 568px !important;
-  border-radius: 12px !important;
-  font-size: 14px;
-  line-height: 1.43;
-  font-family: 'AirbnbCerealMedium';
-  color: '#484848';
+  position: fixed;
+    z-index: 10;
+    min-height: 530px;
+    width: 572px;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-color: white;
+    border-color: black;
+    border-radius: 1px;
+    border-radius: 15px;
+    display: grid;
+    grid-template-rows: 64px auto 74px;
 `;
 
 export const ModalBoxWrapper = styled.div`
@@ -57,7 +59,8 @@ export const Header = styled.header`
   color: rgb(34, 34, 34);
   font-size: 16px;
   line-height: 20px;
-  font-weight: 800;
+  font-weight: 00;
+  font-family: 'AirbnbCerealMedium';
 `;
 
 export const Close = styled.button`
@@ -89,12 +92,12 @@ export const Footer = styled.div`
   display: flex !important;
   flex: 0 0 auto !important;
   margin: auto;
-  border-top: 1px solid rgb(235, 235, 235) !important;
   padding: 16px 24px !important;
   align-items: center !important;
   justify-content: space-between !important;
   font-size: 16px !important;
   line-height: 20px !important;
+  border-top: 1px solid rgb(235, 235, 235);
 `;
 
 export const FootButton = styled.button`
@@ -109,4 +112,56 @@ export const FootButton = styled.button`
   &:focus {
     outline: none;
   }
+`;
+
+export const NestedModalRow = styled.span`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const ModalStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 64px;
+  width: 432px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin-bottom: 4px;
+`;
+
+export const SnapImage = styled.img`
+  object-fit: cover;
+  width: 70px;
+  height: 70px;
+`;
+
+export const AnyTime = styled.div`
+  color: rgb(113,113,113) !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+`;
+
+export const ModalBold = styled.div`
+  height: 20px;
+  width: 432px;
+  font-family: 'AirbnbCerealMedium';
+  color: rgb(34,34,34);
+  font-size: 16px;
+  line-height: 20px;
+`;
+
+export const Saved = styled.div`
+  height: 18px;
+  width: 432px;
+  margin-top: 4px;
+  font-family: 'AirbnbCerealLight';
+  color: rgb(34,34,34);
+  font-size: 14px;
+  line-height: 18px;
 `;

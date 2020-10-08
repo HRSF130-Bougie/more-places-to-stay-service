@@ -25,6 +25,10 @@ class App extends React.Component {
       show: false,
       heart: false,
       currentIndex: 0,
+      dreamHomes: 4,
+      vacationPlaces: 1,
+      mobileListings: 5,
+      snapImage: 'https://bougiemoreplaces.s3-us-west-1.amazonaws.com/MP18.jpg',
     };
 
     this.getSeededData = this.getSeededData.bind(this);
@@ -33,6 +37,7 @@ class App extends React.Component {
     this.goToNextSlide = this.goToNextSlide.bind(this);
     this.unHeartListing = this.unHeartListing.bind(this);
     this.heartListing = this.heartListing.bind(this);
+    this.saveImage = this.saveImage.bind(this);
   }
 
   componentDidMount() {
@@ -111,6 +116,16 @@ class App extends React.Component {
     });
   }
 
+  // Save snapShot modal Image
+  saveImage(index) {
+    const { seededData, vacation } = this.state;
+    const snapshot = seededData[index].photo;
+    this.setState({
+      snapImage: snapshot,
+      vacation: vacation + 1,
+    });
+  }
+
   render() {
     return (
       <ComponentWrapper>
@@ -127,7 +142,17 @@ class App extends React.Component {
           <Listing seededData={this.state.seededData} modal={this.showModal} unHeartListing={this.unHeartListing} />
         </MainWrapper>
         {this.state.show &&
-        <Modal show={this.state.show} onClose={this.showModal} heartListing={this.heartListing} index={this.state.currentIndex} ></Modal>}
+        <Modal
+          show={this.state.show}
+          onClose={this.showModal}
+          heartListing={this.heartListing}
+          index={this.state.currentIndex}
+          dream={this.state.dreamHomes}
+          vacation={this.state.vacationPlaces}
+          mobile={this.state.mobileListings}
+          saveImage={this.saveImage}
+          snap={this.state.snapImage}>
+          </Modal>}
       </ComponentWrapper>
     );
   }
