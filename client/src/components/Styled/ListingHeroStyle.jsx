@@ -74,6 +74,9 @@ export const SuperHost = styled.div`
   border: 0.5px solid rgba(0, 0, 0, 0.2);
   color: rgb(146, 23, 77);
   font-family: 'AirbnbCerealMedium';
+  &:hover {
+    cursor: default;
+  }
 `;
 
 export const Heart = styled.button`

@@ -15,7 +15,7 @@ export const ModalBackdrop = styled.section`
   align-items: flex-end; */}
   justify-content: center;
 `;
-// IF I GO BACKWARDS, GO JUST RESET MODAL STYLE THEN STOP!
+
 export const ModalStyle = styled.div`
   position: fixed;
     z-index: 10;
@@ -44,6 +44,7 @@ export const ModalBoxWrapper = styled.div`
   font-size: 14px;
   line-height: 1.43;
   color: '#484848';
+  border-bottom: 1px solid rgb(235, 235, 235);
   ${'' /* box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px !important;
   border-top-left-radius: 12px !important;
   border-top-right-radius: 12px !important */}
@@ -68,7 +69,8 @@ export const Close = styled.button`
   background: transparent;
   font-family: 'AirbnbCerealMedium';
   font-size: 18px;
-  margin-left: 7px;
+  line-height: 20px;
+  margin-left: 16px;
   &:focus {
     outline: none;
   }
@@ -97,7 +99,7 @@ export const Footer = styled.div`
   justify-content: space-between !important;
   font-size: 16px !important;
   line-height: 20px !important;
-  border-top: 1px solid rgb(235, 235, 235);
+
 `;
 
 export const FootButton = styled.button`
@@ -154,6 +156,7 @@ export const ModalBold = styled.div`
   color: rgb(34,34,34);
   font-size: 16px;
   line-height: 20px;
+  margin-top: 4px;
 `;
 
 export const Saved = styled.div`
@@ -164,4 +167,8 @@ export const Saved = styled.div`
   color: rgb(34,34,34);
   font-size: 14px;
   line-height: 18px;
+`;
+
+export const Spacing = styled.div`
+  width: 15px;
 `;

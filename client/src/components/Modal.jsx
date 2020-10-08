@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  ModalBackdrop, ModalStyle, ModalBoxWrapper, Header, Close, ModalRow, Footer, FootButton, NestedModalRow, ModalStack, SnapImage, AnyTime, ModalBold, Saved } from './Styled/ModalStyle.jsx';
+  ModalBackdrop, ModalStyle, ModalBoxWrapper, Header, Close, ModalRow, Footer, FootButton, NestedModalRow, ModalStack, SnapImage, AnyTime, ModalBold, Saved, Spacing } from './Styled/ModalStyle.jsx';
 
 const Modal = (props) => {
   const {
@@ -44,6 +44,7 @@ const Modal = (props) => {
           <ModalRow type="submit" onClick={(e) => handleClick(e, index)}>
             <NestedModalRow>
               {dreamCheck ? <img src="https://airbnb-bougie.s3-us-west-1.amazonaws.com/icons/emptylisting.png" alt="" /> : <SnapImage src="https://bougiemoreplaces.s3-us-west-1.amazonaws.com/MP18.jpg" alt="" />}
+              <Spacing></Spacing>
               <ModalStack>
                 <AnyTime>Any time</AnyTime>
                 <ModalBold>Dream Homes</ModalBold>
@@ -62,6 +63,7 @@ const Modal = (props) => {
           <ModalRow type="submit" onClick={(e) => handleClick(e, index)}>
             <NestedModalRow>
               {vacationCheck ? <img src="https://airbnb-bougie.s3-us-west-1.amazonaws.com/icons/emptylisting.png" alt="" /> : <SnapImage src="https://bougiemoreplaces.s3-us-west-1.amazonaws.com/MP25.jpg" alt="" />}
+              <Spacing></Spacing>
               <ModalStack>
                 <AnyTime>Any time</AnyTime>
                 <ModalBold>Vacation Places</ModalBold>
@@ -80,6 +82,7 @@ const Modal = (props) => {
           <ModalRow type="submit" onClick={(e) => handleClick(e, index)}>
             <NestedModalRow>
               {mobileCheck ? <img src="https://airbnb-bougie.s3-us-west-1.amazonaws.com/icons/emptylisting.png" alt="" /> : <SnapImage src="https://bougiemoreplaces.s3-us-west-1.amazonaws.com/MP32.jpg" alt="" />}
+              <Spacing></Spacing>
               <ModalStack>
                 <AnyTime>Any time</AnyTime>
                 <ModalBold>Mobile Starred Listings</ModalBold>
