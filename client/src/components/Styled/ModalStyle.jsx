@@ -20,7 +20,7 @@ export const ModalStyle = styled.div`
   position: 'absolute';
   background-color: white;
   ${'' /* max-width: 500px; */}
-  height: 375px;
+  min-height: 375px;
   margin: auto;
   padding: 10px;
   width: 500px !important;

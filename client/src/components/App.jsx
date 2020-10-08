@@ -41,7 +41,7 @@ class App extends React.Component {
 
   // Axios GET request
   getSeededData() {
-    axios.get('http://localhost:3004/api/more-places')
+    axios.get('/api/more-places')
       .then((results) => results.data)
       // .then(result => console.log(result))
       .then((result) => this.setState({

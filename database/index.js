@@ -30,6 +30,9 @@ const Listing = mongoose.Schema({
     superhost: Boolean,
     plus: Boolean,
   },
+  dreamHome: Number,
+  vacationPlaces: Number,
+  mobileListings: Number,
 });
 
 // =========== CREATE MODEL BASED ON SCHEMA ==============
@@ -70,6 +73,19 @@ const initializeData = () => {
         superhost: faker.random.boolean(),
         plus: faker.random.boolean(),
       },
+      dreamHome: faker.random.number({
+        min: 0,
+        max: 3,
+      }),
+      vacationPlaces: faker.random.number({
+        min: 0,
+        max: 3,
+      }),
+      mobileListings: faker.random.number({
+        min: 0,
+        max: 3,
+      }),
+
     });
 
     listingRecord.save((err) => {
