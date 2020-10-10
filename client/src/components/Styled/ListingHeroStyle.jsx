@@ -11,6 +11,7 @@ export const ListingWrapper = styled.div`
   margin-bottom: 20px;
   margin-top: 0px;
   width: 100%;
+  line-height: 1.2;
   scroll-snap-type: x mandatory;
   ${'' /* transform: translateX(-1500px); */}
   `;
@@ -40,6 +41,7 @@ export const Describe = styled.div`
 
 export const HeroPhotoWrap = styled.div`
   display: inline-flex;
+  position: relative;
   height: 100%;
   list-style: none;
   overflow: auto hidden;
@@ -54,7 +56,9 @@ export const SuperRow = styled.span`
   display: inline-flex;
   position: absolute;
   overflow: hidden;
-  padding: 8px;
+  padding: 4px 0 4px 2px;
+  margin-right: -10px;
+  right: 15px;
   justify-content: space-between;
   width: 257px;
   align-items: baseline;
@@ -68,7 +72,7 @@ export const SuperHost = styled.div`
   font-size: 12px;
   border-radius: 5px;
   overflow: auto hidden;
-  padding: 5px;
+  padding: 6px;
   margin: 5px;
   background-color: rgba(255, 255, 255, 0.95);
   border: 0.5px solid rgba(0, 0, 0, 0.2);
@@ -97,7 +101,7 @@ export const Heart = styled.button`
 
 export const Rate = styled.div`
   display: flex;
-  margin-top: 4px;
+  margin-top: 5px;
 `;
 
 export const Price = styled.div`
