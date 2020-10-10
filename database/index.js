@@ -105,13 +105,14 @@ initializeData();
 const retrieveData = (callback) => {
   // initializeData();
   console.log('reached back end side');
-  SingleListing.find({})
-    .then((response) => response.slice(0, 12))
-    .then((response) => {
-      callback(null, response);
-    })
-    // .catch(console.log);
-    .catch((err) => callback(err));
+  SingleListing.aggregate([{$sample: { size:12 }}]).exec((err, response) => {
+  if (err) {
+    callback(err);
+  } else {
+    console.log(response);
+    callback(null, response);
+  }})
+
 };
 
 module.exports = {

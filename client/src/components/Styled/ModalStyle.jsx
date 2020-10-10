@@ -20,7 +20,7 @@ export const ModalStyle = styled.div`
   position: fixed;
     z-index: 10;
     min-height: 530px;
-    width: 572px;
+    ${'' /* width: 572px; */}
     left: 50%;
     top: 50%;
     -webkit-transform: translate(-50%,-50%);
