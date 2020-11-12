@@ -42,7 +42,6 @@ export const Describe = styled.div`
 export const HeroPhotoWrap = styled.div`
   display: inline-flex;
   position: relative;
-  height: 100%;
   list-style: none;
   overflow: auto hidden;
   padding-left: 0px;
